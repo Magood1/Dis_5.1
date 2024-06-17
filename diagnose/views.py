@@ -18,7 +18,6 @@ from rest_framework.permissions import IsAuthenticated
 from .permissions import IsDoctor
 
 
-#Done 
 class QuickDiagnose(viewsets.ModelViewSet):
     """
     API view for performing quick medical diagnosis based on chest X-ray images.
@@ -75,7 +74,6 @@ class QuickDiagnose(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-#Done 
 class MedicalInfoViewSet(viewsets.ModelViewSet):
     queryset = MedicalInfo.objects.all()
     serializer_class = MedicalInfoSerializer
@@ -118,7 +116,6 @@ class MedicalInfoViewSet(viewsets.ModelViewSet):
 
 
 
-#Dnoe
 class PatientViewSet(viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
@@ -195,7 +192,6 @@ class PrescriptionViewSet(viewsets.ModelViewSet):
     
 
 
-#Done
 class AppointmentViewSet(viewsets.ModelViewSet):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
@@ -213,7 +209,6 @@ class AppointmentViewSet(viewsets.ModelViewSet):
         serializer.save()
   
 
-#Done
 class find_prescription(viewsets.ModelViewSet):
     
     queryset = Prescription.objects.all()
@@ -251,7 +246,6 @@ class SpecificAppointment(viewsets.ModelViewSet):
         return patients
 
 
-#Done
 class RangeAppointment(viewsets.ModelViewSet):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
@@ -267,7 +261,6 @@ class RangeAppointment(viewsets.ModelViewSet):
             appointment_date__range=(start_date, end_date)
         )
 
-#Done
 class SpecificPatientAppointment(viewsets.ModelViewSet):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
@@ -283,7 +276,6 @@ class SpecificPatientAppointment(viewsets.ModelViewSet):
         except Appointment.DoesNotExist:
             raise Http404("Patient not found")
 
-#Done
 class BillingViewSet(viewsets.ModelViewSet):
     
     queryset = Billing.objects.all()

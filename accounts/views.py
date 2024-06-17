@@ -46,20 +46,3 @@ class AuthViewSet(viewsets.ViewSet):
     def logout(self, request):
         logout(request)
         return Response({'message': 'Logged out successfully'}, status=status.HTTP_200_OK)
-
-
-"""
-from django.shortcuts import render
-from rest_framework.views import APIView
-from .serializers import DoctorSerializer
-from rest_framework.response import Response
-
-
-# view for registering users
-class RegisterView(APIView):
-    def post(self, request):
-        serializer = DoctorSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-"""

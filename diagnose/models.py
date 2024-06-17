@@ -2,7 +2,6 @@ from django.db import models
 from accounts.models import UserData as Doctor
 
 
-#Done
 class Patient(models.Model):
     patient_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=100)
@@ -20,7 +19,6 @@ class Patient(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-#Done
 class MedicalInfo(models.Model):
     """
     Stores medical information related to patients.
@@ -87,7 +85,7 @@ class MedicalInfo(models.Model):
            if self.death_date >= timezone.now().date():
                raise ValidationError(_("Date of death cannot be in the future."))
 
-#Done
+
 class Prescription(models.Model):
     prescription_id = models.AutoField(primary_key=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
@@ -100,7 +98,6 @@ class Prescription(models.Model):
         return f"Prescription for {self.patient.first_name}: {self.medication_name}"
 
 
-#Done
 class Appointment(models.Model):
     appointment_id = models.AutoField(primary_key=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
@@ -111,7 +108,6 @@ class Appointment(models.Model):
         return f"Appointment for {self.patient.first_name} with Dr. {self.doctor.last_name}"
 
 
-#Dnoe
 class Billing(models.Model):
     billing_id = models.AutoField(primary_key=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
